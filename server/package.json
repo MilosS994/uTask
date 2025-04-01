@@ -3,10 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "type": "module",
-  "scripts": {
-    "dev": "nodemon server.js",
-    "start": "node server.js"
-  },
+  "scripts": {},
   "keywords": [
     "task",
     "management",
@@ -15,5 +12,11 @@
   ],
   "author": "Milos Srejic",
   "license": "ISC",
-  "description": "Modern web application designed for task management, allowing users to create, organize, and track their tasks efficiently."
+  "description": "Modern web application designed for task management, allowing users to create, organize, and track their tasks efficiently.",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "mongoose": "^8.13.1"
+  }
 }
