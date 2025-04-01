@@ -17,6 +17,7 @@
   "license": "ISC",
   "description": "Modern web application designed for task management, allowing users to create, organize, and track their tasks efficiently.",
   "dependencies": {
+    "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^5.1.0",
