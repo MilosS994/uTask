@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "main": "server.js",
   "type": "module",
-  "scripts": {},
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
   "keywords": [
     "task",
     "management",
@@ -18,5 +21,8 @@
     "dotenv": "^16.4.7",
     "express": "^5.1.0",
     "mongoose": "^8.13.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
   }
 }
