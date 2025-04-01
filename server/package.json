@@ -1,0 +1,19 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "task",
+    "management",
+    "CRUD",
+    "MERN"
+  ],
+  "author": "Milos Srejic",
+  "license": "ISC",
+  "description": "Modern web application designed for task management, allowing users to create, organize, and track their tasks efficiently."
+}
