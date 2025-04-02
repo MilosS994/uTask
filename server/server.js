@@ -2,6 +2,7 @@ import express from "express";
 import connectDB from "./database/mongodb.js";
 import cors from "cors";
 import { PORT } from "./config/env.js";
+import errorMiddleware from "./middleware/error.middleware.js";
 
 const app = express();
 
@@ -12,6 +13,9 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Hello from the server");
 });
+
+// Custom error middleware
+app.use(errorMiddleware);
 
 // Start a server
 const startServer = async () => {
