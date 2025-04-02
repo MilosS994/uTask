@@ -1,3 +1,5 @@
+import { NODE_ENV } from "../config/env.js";
+
 const errorMiddleware = (err, req, res, next) => {
   console.error(`[${new Date().toISOString()}] ERROR caught by middleware:`);
   console.error("Status Code:", err.statusCode || 500);
