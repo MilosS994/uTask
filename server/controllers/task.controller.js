@@ -19,3 +19,20 @@ export const getAllTasks = async (req, res, next) => {
     next(error);
   }
 };
+
+export const getTask = async (req, res, next) => {
+  const { id } = req.params;
+
+  try {
+    const task = await Task.findOne({ _id: id });
+
+    if (!task) {
+      res.status(404).json({ success: false, message: "Task not found" });
+    }
+
+    res.status(200).json({ success: true, task: task });
+  } catch (error) {
+    console.error(error.message);
+    next(error);
+  }
+};
