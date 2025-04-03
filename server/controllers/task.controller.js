@@ -36,3 +36,24 @@ export const getTask = async (req, res, next) => {
     next(error);
   }
 };
+
+export const createTask = async (req, res, next) => {
+  const { title, description, priority } = req.body;
+
+  try {
+    const newTask = await Task.create({
+      title: title,
+      description: description,
+      priority: priority,
+    });
+
+    res.status(201).json({
+      success: true,
+      message: "Task created successfully",
+      task: newTask,
+    });
+  } catch (error) {
+    console.error(error.message);
+    next(error);
+  }
+};
