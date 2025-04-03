@@ -57,3 +57,27 @@ export const createTask = async (req, res, next) => {
     next(error);
   }
 };
+
+export const updateTask = async (req, res, next) => {
+  const { id } = req.params;
+  const { title, description, priority, done } = req.body;
+
+  try {
+    const task = await Task.findOneAndUpdate({
+      _id: id,
+      title: title,
+      description: description,
+      priority: priority,
+      done: done,
+    });
+
+    if (!task) {
+      const error = new Error("Task not found");
+      error.statusCode = 404;
+      throw error;
+    }
+  } catch (error) {
+    console.error(error.message);
+    next(error);
+  }
+};
