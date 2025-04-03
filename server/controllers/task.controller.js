@@ -27,7 +27,9 @@ export const getTask = async (req, res, next) => {
     const task = await Task.findOne({ _id: id });
 
     if (!task) {
-      res.status(404).json({ success: false, message: "Task not found" });
+      const error = new Error("Task not found");
+      error.statusCode = 404;
+      throw error;
     }
 
     res.status(200).json({ success: true, task: task });
