@@ -5,6 +5,7 @@ import { PORT } from "./config/env.js";
 import errorMiddleware from "./middleware/error.middleware.js";
 import cookieParser from "cookie-parser";
 import taskRoutes from "./routes/task.routes.js";
+import authRoutes from "./routes/auth.routes.js";
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
+app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1", taskRoutes);
 
 // Custom error middleware
