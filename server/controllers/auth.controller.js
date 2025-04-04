@@ -95,3 +95,21 @@ export const signIn = async (req, res, next) => {
     next(error);
   }
 };
+
+export const signOut = async (req, res, next) => {
+  try {
+    res.clearCookie("jwt", {
+      httpOnly: true,
+      secure: NODE_ENV === "production",
+      sameSite: "strict",
+    });
+
+    res.status(200).json({
+      success: true,
+      message: "User signed out successfully",
+    });
+  } catch (error) {
+    console.error(error.message);
+    next(error);
+  }
+};
