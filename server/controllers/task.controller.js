@@ -65,13 +65,18 @@ export const updateTask = async (req, res, next) => {
   const { title, description, priority, done } = req.body;
 
   try {
-    const task = await Task.findOneAndUpdate({
-      _id: id,
-      title: title,
-      description: description,
-      priority: priority,
-      done: done,
-    });
+    const task = await Task.findOneAndUpdate(
+      {
+        _id: id,
+      },
+      {
+        title: title,
+        description: description,
+        priority: priority,
+        done: done,
+      },
+      { new: true }
+    );
 
     if (!task) {
       const error = new Error("Task not found");
