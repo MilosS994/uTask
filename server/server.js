@@ -1,7 +1,7 @@
 import express from "express";
 import connectDB from "./database/mongodb.js";
 import cors from "cors";
-import { PORT } from "./config/env.js";
+import { PORT, ORIGIN } from "./config/env.js";
 import errorMiddleware from "./middleware/error.middleware.js";
 import cookieParser from "cookie-parser";
 import taskRoutes from "./routes/task.routes.js";
@@ -11,7 +11,13 @@ import userRoutes from "./routes/user.routes.js";
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: ORIGIN,
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+  })
+);
 app.use(express.json());
 app.use(cookieParser());
 
