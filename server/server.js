@@ -3,16 +3,17 @@ import connectDB from "./database/mongodb.js";
 import cors from "cors";
 import { PORT } from "./config/env.js";
 import errorMiddleware from "./middleware/error.middleware.js";
+import cookieParser from "cookie-parser";
+import taskRoutes from "./routes/task.routes.js";
 
 const app = express();
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
 
-app.get("/", (req, res) => {
-  res.send("Hello from the server");
-});
+app.use("/api/v1", taskRoutes);
 
 // Custom error middleware
 app.use(errorMiddleware);
