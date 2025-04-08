@@ -6,6 +6,7 @@
 
 body {
   font-family: "Montserrat", sans-serif;
+  background: linear-gradient(135deg, #dee8eb, #f0f0f4, #f8f7f7);
 }
 
 @custom-variant dark (&:is(.dark *));
