@@ -7,6 +7,20 @@
 body {
   font-family: "Montserrat", sans-serif;
   background: linear-gradient(135deg, #dee8eb, #f0f0f4, #f8f7f7);
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @custom-variant dark (&:is(.dark *));
