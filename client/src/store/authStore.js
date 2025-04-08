@@ -23,13 +23,10 @@ const useAuthStore = create((set) => ({
   isLoading: true,
   error: null,
 
-  signin: async (email, password) => {
+  signin: async (userData) => {
     set({ isLoading: true, error: null });
     try {
-      const response = await apiClient.post("/auth/signin", {
-        email,
-        password,
-      });
+      const response = await apiClient.post("/auth/signin", userData);
       set({
         user: response.data.user,
         isAuthenticated: true,
@@ -49,14 +46,10 @@ const useAuthStore = create((set) => ({
     }
   },
 
-  signup: async (email, password, name) => {
+  signup: async (userData) => {
     set({ isLoading: true, error: null });
     try {
-      const response = await apiClient.post("/auth/signup", {
-        email,
-        password,
-        name,
-      });
+      const response = await apiClient.post("/auth/signup", userData);
       set({
         user: response.data.user,
         isAuthenticated: true,
