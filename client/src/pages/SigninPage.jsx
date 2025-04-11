@@ -50,7 +50,7 @@ const SigninPage = () => {
 
   return (
     <div className="relative min-w-[100vw] min-h-[100vh] flex items-center justify-center md:justify-between md:px-10 lg:px-14">
-      <Card className="w-full h-[60vh] shadow-xl flex justify-center md:w-[70vw] lg:w-[60vw] xl:w-[50vw] style={{ background: 'linear-gradient(135deg, #f0f0f0, #e0dede, #f0f0f0)' }}">
+      <Card className="w-full h-[60vh] shadow-xl flex justify-center md:w-[70vw] lg:w-[60vw] xl:w-[50vw]">
         <CardHeader>
           <CardTitle className="text-xl text-gray-800 font-bold md:text-2xl lg:text-3xl xl:text-4xl">
             Sign in
