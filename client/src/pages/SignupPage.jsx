@@ -38,6 +38,26 @@ const SignupPage = () => {
     e.preventDefault();
     setErrorMessage("");
 
+    if (!name.trim()) {
+      setErrorMessage("Name is required.");
+      return;
+    }
+
+    if (!email.trim()) {
+      setErrorMessage("Email is required.");
+      return;
+    }
+
+    if (!password) {
+      setErrorMessage("Password is required.");
+      return;
+    }
+
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      setErrorMessage("Please enter a valid email address.");
+      return;
+    }
+
     if (password.length < 8) {
       setErrorMessage("Password must be at least 8 characters long.");
       return;
@@ -101,7 +121,6 @@ const SignupPage = () => {
               className="w-full cursor-pointer hover:bg-[#dbe8ec] transition-all duration-300 ease-in-out"
               type="submit"
               disabled={isAuthLoading}
-              onClick={handleSubmit}
             >
               {isAuthLoading ? "Signing up..." : "Sign up"}
             </Button>
