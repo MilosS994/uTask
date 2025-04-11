@@ -101,6 +101,7 @@ const SignupPage = () => {
               className="w-full cursor-pointer hover:bg-[#dbe8ec] transition-all duration-300 ease-in-out"
               type="submit"
               disabled={isAuthLoading}
+              onClick={handleSubmit}
             >
               {isAuthLoading ? "Signing up..." : "Sign up"}
             </Button>
