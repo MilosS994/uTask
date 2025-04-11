@@ -93,7 +93,6 @@ const SignupPage = () => {
               value={name}
               placeholder="Name"
               onChange={(e) => setName(e.target.value)}
-              required
             />
             <Input
               type="email"
@@ -101,7 +100,6 @@ const SignupPage = () => {
               value={email}
               placeholder="Email"
               onChange={(e) => setEmail(e.target.value)}
-              required
             />
             <Input
               type="password"
@@ -109,7 +107,6 @@ const SignupPage = () => {
               value={password}
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
-              required
               minLength={8}
             />
             {/* Error message display */}
