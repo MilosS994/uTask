@@ -37,6 +37,21 @@ const SigninPage = () => {
     e.preventDefault();
     setErrorMessage("");
 
+    if (!email.trim()) {
+      setErrorMessage("Email is required.");
+      return;
+    }
+
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      setErrorMessage("Please enter a valid email address.");
+      return;
+    }
+
+    if (!password) {
+      setErrorMessage("Password is required.");
+      return;
+    }
+
     try {
       await signin({ email, password });
       navigate("/dashboard");
@@ -60,14 +75,13 @@ const SigninPage = () => {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form className="space-y-4" onSubmit={handleSubmit}>
+          <form className="space-y-4" onSubmit={handleSubmit} noValidate>
             <Input
               type="email"
               id="email"
               value={email}
               placeholder="Email"
               onChange={(e) => setEmail(e.target.value)}
-              required
             />
             <Input
               type="password"
@@ -75,8 +89,6 @@ const SigninPage = () => {
               value={password}
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
-              required
-              minLength={8}
             />
             {/* Error message display */}
             {errorMessage && (

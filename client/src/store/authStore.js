@@ -34,6 +34,7 @@ const useAuthStore = create((set) => ({
         error: null,
       });
     } catch (error) {
+      console.log("API error:", error.response?.data);
       console.error("Sign in error:", error);
       const errorData = getErrorData(error);
       set({

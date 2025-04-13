@@ -8,16 +8,11 @@ import useAuthStore from "./store/authStore.js";
 
 const App = () => {
   const checkAuthStatus = useAuthStore((state) => state.checkAuthStatus);
-  const isLoadingAuth = useAuthStore((state) => state.isLoading);
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
 
   useEffect(() => {
     checkAuthStatus();
   }, [checkAuthStatus]);
-
-  if (isLoadingAuth) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <Routes>
@@ -57,7 +52,10 @@ const App = () => {
       />
 
       {/* 404 page */}
-      <Route path="*" element={<NotFoundPage />} />
+      <Route
+        path="*"
+        element={isAuthenticated ? <NotFoundPage /> : <SigninPage />}
+      />
     </Routes>
   );
 };
