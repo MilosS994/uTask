@@ -9,6 +9,7 @@ const MyProfile = () => {
   const updateUser = useAuthStore((state) => state.updateUser);
 
   const [name, setName] = useState(user?.name || "");
+  const [oldPassword, setOldPassword] = useState("");
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
@@ -20,6 +21,11 @@ const MyProfile = () => {
 
     if (!password.trim() && name.trim() === user?.name) {
       setError("You haven't made any changes!");
+      return;
+    }
+
+    if (password.trim() && !oldPassword.trim()) {
+      setError("Please enter your current password!");
       return;
     }
 
@@ -63,6 +69,17 @@ const MyProfile = () => {
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-800 mb-1">
+            Old Password
+          </label>
+          <Input
+            type="password"
+            value={oldPassword}
+            onChange={(e) => setOldPassword(e.target.value)}
           />
         </div>
 
