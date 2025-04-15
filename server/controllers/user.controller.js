@@ -27,7 +27,7 @@ export const getUserInfo = async (req, res, next) => {
 export const updateUserInfo = async (req, res, next) => {
   try {
     const userId = req.user.userId;
-    const { name, email, password } = req.body;
+    const { name, email, password, oldPassword } = req.body;
 
     if (!name && !email && !password) {
       const error = new Error(
@@ -47,7 +47,17 @@ export const updateUserInfo = async (req, res, next) => {
 
     if (name) user.name = name;
     if (email) user.email = email;
-    if (password) user.password = password;
+    if (password && oldPassword) {
+      const passwordMatch = await bcrypt.compare(oldPassword, user.password);
+
+      if (!passwordMatch) {
+        const error = new Error("Incorrect old password");
+        error.statusCode = 400;
+        throw error;
+      }
+      const hashedPassword = await bcrypt.hash(password, 10);
+      user.password = hashedPassword;
+    }
 
     const updatedUser = await user.save();
 
