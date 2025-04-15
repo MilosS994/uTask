@@ -1,5 +1,8 @@
 import { useState } from "react";
+// React Icons
 import { CgProfile } from "react-icons/cg";
+import { CiLogout } from "react-icons/ci";
+
 import Modal from "../components/app/Modal";
 import MyProfile from "../pages/MyProfile";
 // Zustand store for authentication
@@ -8,6 +11,7 @@ import useAuthStore from "../store/authStore.js";
 const DashboardPage = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const user = useAuthStore((state) => state.user);
+  const signout = useAuthStore((state) => state.signout);
   return (
     <main className="min-w-[100vw] min-h-[100vh] flex flex-col justify-between">
       {/* HEADER */}
@@ -20,10 +24,16 @@ const DashboardPage = () => {
             </span>
           )}
         </h2>{" "}
-        <CgProfile
-          className="text-4xl hover:text-neutral-300 cursor-pointer"
-          onClick={() => setIsProfileOpen(true)}
-        />
+        <div className="flex gap-4 items-center">
+          <CgProfile
+            className="text-4xl hover:text-neutral-300 cursor-pointer"
+            onClick={() => setIsProfileOpen(true)}
+          />
+          <CiLogout
+            className="text-4xl hover:text-neutral-300 cursor-pointer"
+            onClick={() => signout()}
+          />
+        </div>
       </header>
       {/* PROFILE MODAL */}
       {isProfileOpen && (
