@@ -111,6 +111,10 @@ const useAuthStore = create((set) => ({
       });
     }
   },
+
+  updateUser: (newUser) => {
+    set({ user: newUser });
+  },
 }));
 
 export default useAuthStore;
