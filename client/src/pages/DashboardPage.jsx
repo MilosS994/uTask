@@ -9,7 +9,8 @@ const DashboardPage = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const user = useAuthStore((state) => state.user);
   return (
-    <main className="min-w-[100vw] min-h-[100vh] flex flex-col">
+    <main className="min-w-[100vw] min-h-[100vh] flex flex-col justify-between">
+      {/* HEADER */}
       <header className="flex justify-between items-center p-6 bg-blue-900 text-white border-b-4 border-yellow-600">
         <h2 className="text-neutral-300 text-lg italic">
           Welcome,{" "}
@@ -24,13 +25,21 @@ const DashboardPage = () => {
           onClick={() => setIsProfileOpen(true)}
         />
       </header>
+      {/* PROFILE MODAL */}
       {isProfileOpen && (
         <Modal onClose={() => setIsProfileOpen(false)}>
           <MyProfile />
         </Modal>
       )}
-      <section></section>
-      <footer></footer>
+      <section className="flex-1"></section>
+      {/* FOOTER */}
+      <footer>
+        <div className="p-4 text-center border-t-4 border-yellow-600">
+          <p className="font-light text-md text-gray-800">
+            &copy; {new Date().getFullYear()} uTask. All rights reserved.
+          </p>
+        </div>
+      </footer>
     </main>
   );
 };
