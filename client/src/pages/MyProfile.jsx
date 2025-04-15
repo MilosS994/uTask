@@ -29,6 +29,11 @@ const MyProfile = () => {
       return;
     }
 
+    if (password.length < 8) {
+      setError("Password must be at least 8 characters long!");
+      return;
+    }
+
     try {
       const response = await apiClient.patch("/users/me", {
         name,
