@@ -6,6 +6,15 @@ const useTaskStore = create((set, get) => ({
   isLoading: false,
   error: null,
 
+  createTask: async (data) => {
+    try {
+      await apiClient.post("/tasks", data);
+      await get().getTasks();
+    } catch (err) {
+      console.error("Create task failed: ", err.message);
+    }
+  },
+
   getTasks: async () => {
     set({ isLoading: true, error: null });
     try {
