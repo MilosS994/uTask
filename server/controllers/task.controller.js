@@ -8,6 +8,7 @@ export const getAllTasks = async (req, res, next) => {
       res
         .status(200)
         .json({ success: true, message: "There are no tasks yet" });
+      return;
     }
 
     res.status(200).json({
