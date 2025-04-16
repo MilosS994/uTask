@@ -6,6 +6,7 @@ import { IoIosAddCircleOutline } from "react-icons/io";
 
 import Modal from "../components/app/Modal";
 import MyProfile from "../pages/MyProfile";
+import AddTaskForm from "../components/app/AddTaskForm";
 // Zustand store for authentication
 import useAuthStore from "../store/authStore.js";
 
@@ -13,6 +14,7 @@ import TasksContainer from "../components/app/TasksContainer";
 
 const DashboardPage = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [isNewTaskOpen, setIsNewTaskOpen] = useState(false);
   const user = useAuthStore((state) => state.user);
   const signout = useAuthStore((state) => state.signout);
   return (
@@ -46,8 +48,17 @@ const DashboardPage = () => {
       )}
       {/* TASKS SECTION */}
       <section className="flex-1">
-        <div className="p-8 bg-blue-100 md:p-6 flex justify-evenly">
-          <IoIosAddCircleOutline className="text-4xl text-gray-800 hover:text-gray-600 cursor-pointer transition-all duration-100 ease-in-out md:text-5xl" />
+        <div className="p-8 md:p-6 flex justify-evenly">
+          <IoIosAddCircleOutline
+            className="text-4xl text-gray-800 hover:text-gray-600 cursor-pointer transition-all duration-100 ease-in-out md:text-5xl"
+            onClick={() => setIsNewTaskOpen(true)}
+          />
+          {/* NEW TASK MODAL */}
+          {isNewTaskOpen && (
+            <Modal onClose={() => setIsNewTaskOpen(false)}>
+              <AddTaskForm onClose={() => setIsNewTaskOpen(false)} />
+            </Modal>
+          )}
           <div className="flex items-center justify-center gap-2 md:gap-4 lg:gap-6">
             <p className="text-md font-semibold text-gray-800 lg:text-lg">
               Sort
