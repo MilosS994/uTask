@@ -1,9 +1,11 @@
 import { useState } from "react";
 
+// React Icons
 import { FaCircle } from "react-icons/fa";
 import { FaPenToSquare } from "react-icons/fa6";
 import { IoMdDoneAll } from "react-icons/io";
 import { AiOutlineDelete } from "react-icons/ai";
+import { CgCalendarDue } from "react-icons/cg";
 
 import useTaskStore from "../../store/taskStore.js";
 import EditTaskForm from "./EditTaskForm.jsx";
@@ -83,10 +85,19 @@ const Task = ({ task }) => {
             }`}
             onClick={handleEdit}
           />
-          <IoMdDoneAll
-            className="text-2xl text-green-800 hover:text-green-600 cursor-pointer transition-all duration-100 ease-in-out md:text-3xl xl:text-4xl"
-            onClick={handleDone}
-          />
+          {/* Check if task is done to show the correct icon */}
+          {task.done ? (
+            <CgCalendarDue
+              className="text-2xl text-gray-800 hover:text-gray-600 cursor-pointer transition-all duration-100 ease-in-out md:text-3xl xl:text-4xl"
+              onClick={handleDone}
+            />
+          ) : (
+            <IoMdDoneAll
+              className="text-2xl text-green-800 hover:text-green-600 cursor-pointer transition-all duration-100 ease-in-out md:text-3xl xl:text-4xl"
+              onClick={handleDone}
+            />
+          )}
+
           <AiOutlineDelete
             className="text-red-800 text-2xl hover:text-red-600 cursor-pointer transition-all duration-100 ease-in-out md:text-3xl xl:text-4xl"
             onClick={handleDelete}
