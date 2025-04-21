@@ -1,8 +1,10 @@
 import Task from "../models/task.model.js";
+import mongoose from "mongoose";
 
 export const getAllTasks = async (req, res, next) => {
   try {
-    const tasks = await Task.find();
+    const { userId } = req.user;
+    const tasks = await Task.find({ user: userId }).sort({ createdAt: -1 });
 
     if (tasks.length === 0) {
       res
@@ -22,10 +24,17 @@ export const getAllTasks = async (req, res, next) => {
 };
 
 export const getTask = async (req, res, next) => {
+  const { userId } = req.user;
   const { id } = req.params;
 
   try {
-    const task = await Task.findOne({ _id: id });
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      const error = new Error("Invalid task ID");
+      error.statusCode = 400;
+      throw error;
+    }
+
+    const task = await Task.findOne({ _id: id, user: userId });
 
     if (!task) {
       const error = new Error("Task not found");
@@ -41,6 +50,7 @@ export const getTask = async (req, res, next) => {
 };
 
 export const createTask = async (req, res, next) => {
+  const { userId } = req.user;
   const { title, description, priority } = req.body;
 
   try {
@@ -48,6 +58,7 @@ export const createTask = async (req, res, next) => {
       title: title,
       description: description,
       priority: priority,
+      user: userId,
     });
 
     res.status(201).json({
@@ -62,6 +73,7 @@ export const createTask = async (req, res, next) => {
 };
 
 export const updateTask = async (req, res, next) => {
+  const { userId } = req.user;
   const { id } = req.params;
   const { title, description, priority, done } = req.body;
 
@@ -69,6 +81,7 @@ export const updateTask = async (req, res, next) => {
     const task = await Task.findOneAndUpdate(
       {
         _id: id,
+        user: userId,
       },
       {
         title: title,
@@ -97,9 +110,10 @@ export const updateTask = async (req, res, next) => {
 };
 
 export const deleteTask = async (req, res, next) => {
+  const { userId } = req.user;
   const { id } = req.params;
   try {
-    const task = await Task.findOneAndDelete({ _id: id });
+    const task = await Task.findOneAndDelete({ _id: id, user: userId });
 
     if (!task) {
       const error = new Error("Task not found");
