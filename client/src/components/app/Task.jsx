@@ -41,7 +41,7 @@ const Task = ({ task }) => {
 
   return (
     <div
-      className={`p-4 border-yellow-600 border-1 rounded-xl shadow-lg bg-blue-50 md:p-6 ${
+      className={`p-4 border-yellow-600 border-1 rounded-xl shadow-lg bg-blue-50 md:p-6 flex flex-col justify-between ${
         task.done ? "bg-gray-300 cursor-not-allowed" : ""
       }`}
     >
