@@ -52,7 +52,7 @@ const Task = ({ task }) => {
       >
         {task.title}
       </h2>
-      <p className="text-gray-800 text-sm mb-6 md:text-md lg:text-lg lg:mb-8">
+      <p className="text-gray-800 wrap-break-word text-sm mb-6 md:text-md lg:text-lg lg:mb-8">
         {task.description}
       </p>
       <div className="flex justify-between items-center">
