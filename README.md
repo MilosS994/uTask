@@ -1,77 +1,135 @@
-# uTask - Task Management Application
+# 📌 uTask – Task Management Application
 
-## Description
+uTask is a modern full-stack task management web app built with the **MERN stack** (MongoDB, Express.js, React.js, Node.js). The app allows users to register, log in, and manage their personal tasks through an intuitive, responsive interface.
 
-uTask is a modern web application designed for efficient task management. Users can create, organize, prioritize, and track their tasks through an intuitive user interface. This project showcases a full-stack MERN application (MongoDB, Express.js, React.js, Node.js) with a focus on a clean backend architecture, secure authentication, and complete CRUD functionality for tasks.
+This repository contains the **backend** code with secure authentication, clean architecture, and RESTful API implementation, as well as the **frontend** which is developed using React.js, Zustand for state management, and Tailwind CSS with Shadcn UI for design.
 
-_(Backend development is complete and documented here. Frontend development using React/Zustand/Tailwind/Shadcn UI is planned/in progress.)_
+> ✅ **Frontend development is complete, and the application is ready for use.**
 
-- **Live Application:** [Link to deployed application - Add when available]
-- **Frontend Repository (if separate):** [Link to frontend repo - Add if applicable]
+---
 
-## Technologies Used
+## 🌐 Live Demo
 
-This project leverages a modern MERN stack and related technologies:
+🚀 [Live Application](#) – ... _(Will be added once the app is deployed)_
 
-- **Backend:**
-  - [Node.js](https://nodejs.org/) - JavaScript runtime environment
-  - [Express.js](https://expressjs.com/) - Web application framework for Node.js
-  - [Mongoose](https://mongoosejs.com/) - Elegant MongoDB object modeling
-  - [MongoDB Atlas](https://www.mongodb.com/atlas/database) - Cloud database service (or local MongoDB)
-  - [jsonwebtoken](https://jwt.io/) (JWT) - Secure authentication token generation and verification
-  - [bcryptjs](https://www.npmjs.com/package/bcryptjs) - Password hashing library
-  - [cookie-parser](https://www.npmjs.com/package/cookie-parser) - Middleware for parsing cookies
-  - [cors](https://www.npmjs.com/package/cors) - Middleware for enabling Cross-Origin Resource Sharing
-  - [dotenv](https://www.npmjs.com/package/dotenv) - Environment variable management
-- **Frontend (Planned/In Progress):**
-  - [React.js](https://react.dev/) - UI library
-  - [Zustand](https://zustand-drehmoment.vercel.app/) - State management library
-  - [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
-  - [Shadcn UI](https://ui.shadcn.com/) - Reusable UI components
-- **Development & General:**
-  - [nodemon](https://nodemon.io/) - Automatic server restarts during development
-  - [cross-env](https://www.npmjs.com/package/cross-env) - Cross-platform environment variable setting
-  - [Git](https://git-scm.com/) & GitHub - Version control and hosting
+---
 
-## Core Features (Backend Implementation)
+## 🛠️ Tech Stack
 
-The backend provides a robust API supporting the following features:
+### 📌 Backend
 
-- **Secure User Authentication:**
-  - User registration with password hashing (`bcryptjs`).
-  - User login verifying credentials and issuing JWTs.
-  - User logout mechanism via cookie clearing.
-  - JWTs are handled securely via `HttpOnly` cookies.
-- **User Profile Management:**
-  - Endpoint to retrieve the current logged-in user's profile information.
-  - Endpoint to update the current user's profile details (name, email, password).
-- **Complete Task CRUD Functionality:**
-  - Endpoints for creating, reading (all and specific), updating, and deleting tasks.
-  - Tasks are securely associated with the logged-in user.
-  - Support for task priorities and completion status.
-- **API Design & Structure:**
-  - RESTful API design principles.
-  - Organized project structure (models, routes, controllers, middleware).
-  - Centralized error handling for consistent error responses.
-  - Secure CORS policy configured via environment variables.
-  - Data validation implemented using Mongoose schemas.
+- **Node.js** – JavaScript runtime
+- **Express.js** – Web server framework
+- **MongoDB Atlas** – Cloud NoSQL database
+- **Mongoose** – ODM for MongoDB
+- **jsonwebtoken (JWT)** – Authentication
+- **bcryptjs** – Password hashing
+- **cookie-parser** – Cookie handling
+- **cors** – CORS support
+- **dotenv** – Environment config
 
-## API Endpoints Reference
+### 🧠 Frontend
 
-The backend exposes the following API endpoints under the base path `/api/v1`:
+- **React.js** – UI library
+- **Zustand** – Lightweight state management
+- **Tailwind CSS v4** – Utility-first CSS
+- **Shadcn UI** – Headless UI components
 
-- **Auth Routes (`/auth`)**
-  - `POST /signup`
-  - `POST /signin`
-  - `POST /signout`
-- **User Routes (`/users`)**
-  - `GET /me`
-  - `PATCH /me`
-- **Task Routes (`/tasks`)**
-  - `POST /`
-  - `GET /`
-  - `GET /:id`
-  - `PUT /:id`
-  - `DELETE /:id`
+### ⚙️ Development Tools
 
-_(All User and Task routes require authentication via JWT cookie.)_
+- **nodemon** – Auto-reload during dev
+- **cross-env** – Cross-platform env support
+- **Git & GitHub** – Version control
+
+---
+
+## 🔐 Authentication & Authorization
+
+- ✅ JWT-based login system (via HttpOnly cookies)
+- ✅ Password hashing with `bcryptjs`
+- ✅ Secure user signup, login, and logout
+- ✅ Middleware to protect routes
+
+---
+
+## 👤 User Features
+
+- ✅ Register and login users with secure authentication
+- ✅ Get current user data (`GET /me`)
+- ✅ Update profile details (`PATCH /me`)
+- ✅ Password updates with rehashing
+
+---
+
+## ✅ Task Management Features
+
+- ✅ Create new tasks
+- ✅ Retrieve all tasks (user-specific)
+- ✅ Get a task by ID
+- ✅ Update task content, status, and priority
+- ✅ Delete tasks
+
+All tasks are scoped per authenticated user.
+
+---
+
+## 📁 API Endpoints
+
+Base path: `/api/v1`
+
+### 🔑 Auth Routes
+
+| Method | Endpoint        | Description             |
+| ------ | --------------- | ----------------------- |
+| POST   | `/auth/signup`  | Register a new user     |
+| POST   | `/auth/signin`  | Login a user            |
+| POST   | `/auth/signout` | Logout the current user |
+
+### 👤 User Routes
+
+| Method | Endpoint    | Description           |
+| ------ | ----------- | --------------------- |
+| GET    | `/users/me` | Get current user info |
+| PATCH  | `/users/me` | Update user info      |
+
+### 📋 Task Routes
+
+| Method | Endpoint     | Description       |
+| ------ | ------------ | ----------------- |
+| POST   | `/tasks`     | Create a new task |
+| GET    | `/tasks`     | Get all tasks     |
+| GET    | `/tasks/:id` | Get task by ID    |
+| PUT    | `/tasks/:id` | Update task by ID |
+| DELETE | `/tasks/:id` | Delete task by ID |
+
+> 🛡️ All `users` and `tasks` routes require JWT authentication via cookies.
+
+---
+
+## 📦 Project Structure
+
+```bash
+server/
+│
+├── config/        # ENV config
+├── controllers/   # Auth, User, and Task logic
+├── middleware/    # Auth middleware & error handler
+├── models/        # Mongoose schemas (User, Task)
+├── routes/        # API routes
+└── server.js      # Entry point
+
+
+client/
+│
+├── src/
+│   ├── assets/         # Logo
+│   ├── components/     # Reusable UI components (Buttons, Inputs, etc.) and app components (Modals, Forms)
+│   ├── pages/          # Page components (Signup, Signin, Dashboard, etc.)
+│   ├── store/          # Zustand state management store
+│   ├── services/       # Axios
+│   ├── App.jsx         # Main app component and routing setup
+│   ├── main.jsx
+│   ├── index.css       # Global styles
+│
+└── index.html          # Root HTML template
+```
