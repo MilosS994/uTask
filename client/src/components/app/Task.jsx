@@ -41,10 +41,15 @@ const Task = ({ task }) => {
 
   return (
     <div
-      className={`p-4 border-yellow-600 border-1 rounded-xl shadow-lg bg-blue-50 md:p-6 flex flex-col justify-between ${
-        task.done ? "bg-gray-300 cursor-not-allowed" : ""
+      className={`relative transition-all duration-200 hover:shadow-xl hover:-translate-y-1 p-4 border rounded-2xl shadow-md md:p-6 flex flex-col justify-between ${
+        task.done ? "bg-gray-200 cursor-not-allowed" : "bg-white"
       }`}
     >
+      {task.done && (
+        <span className="absolute top-2 right-3 bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded-full">
+          Done
+        </span>
+      )}
       <div>
         <h2
           className={`text-md text-gray-800 font-bold mb-2 md:text-lg lg:text-xl lg:mb-3 xl:text-2xl hover:cursor-default ${
@@ -62,7 +67,7 @@ const Task = ({ task }) => {
         <div className="flex items-center justify-center gap-2">
           <FaCircle
             title="Priority"
-            className={`text-xl md:text-2xl ${
+            className={`text-xl md:text-xl ${
               task.priority === 3
                 ? "text-red-700"
                 : task.priority === 2
@@ -74,7 +79,13 @@ const Task = ({ task }) => {
             name="priority"
             value={task.priority}
             onChange={handlePriorityChange}
-            className="text-sm text-gray-800 cursor-pointer focus:outline-none focus:border-transparent rounded-md shadow-sm p-1"
+            className={`text-sm rounded-md shadow-sm px-2 py-1 cursor-pointer ${
+              task.priority === 3
+                ? "bg-red-100 text-red-700"
+                : task.priority === 2
+                ? "bg-yellow-100 text-yellow-700"
+                : "bg-green-100 text-green-700"
+            }`}
             disabled={task.done}
           >
             <option value="3">High</option>
@@ -82,7 +93,7 @@ const Task = ({ task }) => {
             <option value="1">Low</option>
           </select>
         </div>
-        <div className="flex gap-4 items-center justify-center">
+        <div className="flex gap-6 items-center justify-center">
           <FaPenToSquare
             title="Edit Task"
             className={`text-2xl text-gray-800 hover:text-gray-600 cursor-pointer transition-all duration-100 ease-in-out md:text-2xl xl:text-3xl ${
