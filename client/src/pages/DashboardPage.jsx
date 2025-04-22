@@ -25,7 +25,7 @@ const DashboardPage = () => {
   return (
     <main className="w-full min-h-[100vh] flex flex-col justify-between">
       {/* HEADER */}
-      <header className="flex justify-between items-center p-6 bg-blue-900 text-white border-b-4 border-yellow-600 md:p-8 lg:p-10 hover:cursor-default">
+      <header className="flex justify-between items-center p-6 bg-gradient-to-r from-blue-900 via-indigo-800 to-violet-700 text-white border-b-4 border-yellow-600 md:p-8 lg:p-10 hover:cursor-default">
         <h2 className="text-neutral-300 text-lg italic md:text-2xl lg:text-3xl">
           Welcome,{" "}
           {user && (
@@ -89,7 +89,7 @@ const DashboardPage = () => {
         <TasksContainer sortBy={sortBy} />
       </section>
       {/* FOOTER */}
-      <footer className="bg-blue-50 hover:cursor-default">
+      <footer className="bg-gradient-to-t from-neutral-50 via-neutral-100 to-blue-100 hover:cursor-default">
         <div className="p-4 text-center border-t-4 border-yellow-600 lg:p-6">
           <p className="text-sm text-gray-800 md:text-lg">
             &copy; {new Date().getFullYear()} uTask. All rights reserved.
@@ -97,7 +97,7 @@ const DashboardPage = () => {
           <p className="font-light text-sm text-gray-800 md:text-lg">
             Need help?{" "}
             <a
-              className="text-blue-800 hover:underline"
+              className="text-blue-800 hover:underline font-semibold"
               href="mailto:utaskapp.support@gmail.com"
             >
               utaskapp.support@gmail.com
