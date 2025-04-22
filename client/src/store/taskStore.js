@@ -15,10 +15,10 @@ const useTaskStore = create((set, get) => ({
     }
   },
 
-  getTasks: async () => {
+  getTasks: async (queryParams = "") => {
     set({ isLoading: true, error: null });
     try {
-      const response = await apiClient.get("/tasks");
+      const response = await apiClient.get(`/tasks${queryParams}`);
       set({ tasks: response.data.tasks, isLoading: false });
     } catch (err) {
       set({
