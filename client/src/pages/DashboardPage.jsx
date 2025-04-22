@@ -23,7 +23,7 @@ const DashboardPage = () => {
     setSortBy(event.target.value);
   };
   return (
-    <main className="min-w-[100vw] min-h-[100vh] flex flex-col justify-between">
+    <main className="w-full min-h-[100vh] flex flex-col justify-between">
       {/* HEADER */}
       <header className="flex justify-between items-center p-6 bg-blue-900 text-white border-b-4 border-yellow-600 md:p-8 lg:p-10 hover:cursor-default">
         <h2 className="text-neutral-300 text-lg italic md:text-2xl lg:text-3xl">
