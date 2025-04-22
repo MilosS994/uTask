@@ -1,4 +1,3 @@
-// Shadcn UI components for the signup page
 import {
   Card,
   CardContent,
@@ -10,23 +9,15 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-// Assets
 import assets from "../assets/assets.js";
-
-// React and React Router
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
-// Zustand store for authentication
 import useAuthStore from "../store/authStore.js";
 
-// Page
 const SignupPage = () => {
-  // State for form inputs
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // State for error message
   const [errorMessage, setErrorMessage] = useState("");
 
   const signup = useAuthStore((state) => state.signup);
@@ -38,111 +29,94 @@ const SignupPage = () => {
     e.preventDefault();
     setErrorMessage("");
 
-    if (!name.trim()) {
-      setErrorMessage("Name is required.");
-      return;
-    }
-
-    if (!email.trim()) {
-      setErrorMessage("Email is required.");
-      return;
-    }
-
-    if (!password) {
-      setErrorMessage("Password is required.");
-      return;
-    }
-
-    if (!/\S+@\S+\.\S+/.test(email)) {
-      setErrorMessage("Please enter a valid email address.");
-      return;
-    }
-
-    if (password.length < 8) {
-      setErrorMessage("Password must be at least 8 characters long.");
-      return;
-    }
+    if (!name.trim()) return setErrorMessage("Name is required.");
+    if (!email.trim()) return setErrorMessage("Email is required.");
+    if (!password) return setErrorMessage("Password is required.");
+    if (!/\S+@\S+\.\S+/.test(email))
+      return setErrorMessage("Enter a valid email address.");
+    if (password.length < 8)
+      return setErrorMessage("Password must be at least 8 characters.");
 
     try {
       await signup({ email, password, name });
       navigate("/dashboard");
     } catch (error) {
-      console.error("Signup page error:", error);
+      console.error("Signup error:", error);
       setErrorMessage(
-        error.message || "An unexpected error occurred during sign up."
+        error.message || "Something went wrong. Please try again."
       );
     }
   };
 
   return (
-    <div className="relative min-w-[100vw] min-h-[100vh] flex items-center justify-center md:justify-between md:px-10 lg:px-14">
-      <Card className="w-full h-[60vh] shadow-xl flex justify-center md:w-[70vw] lg:w-[60vw] xl:w-[50vw]">
-        <CardHeader>
-          <CardTitle className="text-xl text-gray-800 font-bold md:text-2xl lg:text-3xl xl:text-4xl">
-            Create an account
-          </CardTitle>
-          <CardDescription className="text-gray-600 font-light lg:text-lg">
-            Enter your details and start tracking your daily tasks!
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form className="space-y-4" onSubmit={handleSubmit}>
-            <Input
-              type="text"
-              id="name"
-              value={name}
-              placeholder="Name"
-              onChange={(e) => setName(e.target.value)}
-            />
-            <Input
-              type="email"
-              id="email"
-              value={email}
-              placeholder="Email"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <Input
-              type="password"
-              id="password"
-              value={password}
-              placeholder="Password"
-              onChange={(e) => setPassword(e.target.value)}
-              minLength={8}
-            />
-            {/* Error message display */}
-            {errorMessage && (
-              <p className="text-sm text-red-700">{errorMessage}</p>
-            )}
-            <Button
-              variant="outline"
-              className="w-full cursor-pointer hover:bg-[#dbe8ec] transition-all duration-300 ease-in-out"
-              type="submit"
-              disabled={isAuthLoading}
-            >
-              {isAuthLoading ? "Signing up..." : "Sign up"}
-            </Button>
-          </form>
-        </CardContent>
-        <CardFooter className="mt-4">
-          <p>
-            Already have an account?{" "}
+    <div className="flex flex-col-reverse md:flex-row min-h-screen items-center justify-center bg-gradient-to-r from-blue-300 via-indigo-400 to-violet-500 px-4">
+      {/* Left - Form */}
+      <div className="w-full md:w-1/2 flex justify-center">
+        <Card className="w-full max-w-md shadow-lg rounded-2xl p-6">
+          <CardHeader className="text-center">
+            <CardTitle className="text-2xl md:text-3xl font-bold text-gray-800">
+              Create your account
+            </CardTitle>
+            <CardDescription className="text-gray-500 mt-1">
+              Sign up and start managing your tasks
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <Input
+                type="text"
+                placeholder="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="rounded-xl"
+              />
+              <Input
+                type="email"
+                placeholder="Email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="rounded-xl"
+              />
+              <Input
+                type="password"
+                placeholder="Password (min. 8 characters)"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="rounded-xl"
+              />
+              {errorMessage && (
+                <div className="bg-red-100 text-red-700 px-3 py-2 rounded-lg text-sm">
+                  {errorMessage}
+                </div>
+              )}
+              <Button
+                type="submit"
+                className="w-full rounded-xl bg-[#79a9b9] hover:bg-[#5d8693] transition duration-200 text-white cursor-pointer"
+                disabled={isAuthLoading}
+              >
+                {isAuthLoading ? "Signing up..." : "Sign Up"}
+              </Button>
+            </form>
+          </CardContent>
+          <CardFooter className="flex justify-center text-sm mt-2">
+            Already have an account?&nbsp;
             <Link
               to="/signin"
-              className="text-[#79a9b9] font-semibold hover:text-[#5d8693]"
+              className="text-[#79a9b9] font-medium hover:text-[#5d8693]"
             >
               Sign in
             </Link>
-          </p>
-        </CardFooter>
-      </Card>
-      <div className="absolute top-2 right-4 md:relative md:flex-1/2 md:flex md:justify-center md:items-center">
-        <div className="border-blue-100 border-3 p-2 rounded-full md:border-6 md:p-6">
-          <img
-            src={assets.logo}
-            alt="logo"
-            className="w-20 h-20 md:w-36 md:h-36 lg:w-48 lg:h-48 xl:w-64 xl:h-64 animate-pulse"
-          />
-        </div>
+          </CardFooter>
+        </Card>
+      </div>
+
+      {/* Right - Logo */}
+      <div className="mb-10 md:mb-0 md:w-1/2 flex justify-center">
+        <img
+          src={assets.logo}
+          alt="App logo"
+          className="w-36 h-36 md:w-56 md:h-56 xl:w-72 xl:h-72 animate-pulse"
+        />
       </div>
     </div>
   );
