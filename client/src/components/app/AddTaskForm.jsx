@@ -14,7 +14,7 @@ const AddTaskForm = ({ onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!title.trim()) {
-      setErrorMessage("Title is required");
+      setErrorMessage("Title is required!");
       return;
     }
 
