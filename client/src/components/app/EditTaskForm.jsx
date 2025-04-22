@@ -39,6 +39,7 @@ const EditTaskForm = ({ task, onSave, onCancel }) => {
         placeholder="Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+        autoFocus
       />
       <Input
         placeholder="Description"
