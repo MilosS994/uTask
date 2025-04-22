@@ -31,11 +31,11 @@ const DashboardPage = () => {
         </h2>{" "}
         <div className="flex gap-4 items-center">
           <CgProfile
-            className="text-4xl hover:text-neutral-300 cursor-pointer md:text-5xl"
+            className="text-3xl hover:text-neutral-300 cursor-pointer md:text-5xl"
             onClick={() => setIsProfileOpen(true)}
           />
           <CiLogout
-            className="text-4xl hover:text-neutral-300 cursor-pointer md:text-5xl"
+            className="text-3xl hover:text-neutral-300 cursor-pointer md:text-5xl"
             onClick={() => signout()}
           />
         </div>
@@ -50,7 +50,7 @@ const DashboardPage = () => {
       <section className="flex-1">
         <div className="p-8 md:p-6 flex justify-evenly">
           <IoIosAddCircleOutline
-            className="text-4xl text-gray-800 hover:text-gray-600 cursor-pointer transition-all duration-100 ease-in-out md:text-5xl"
+            className="text-3xl text-gray-800 hover:text-gray-600 cursor-pointer transition-all duration-100 ease-in-out md:text-5xl"
             onClick={() => setIsNewTaskOpen(true)}
           />
           {/* NEW TASK MODAL */}
@@ -60,7 +60,7 @@ const DashboardPage = () => {
             </Modal>
           )}
           <div className="flex items-center justify-center gap-2 md:gap-4 lg:gap-6">
-            <p className="text-md font-semibold text-gray-800 lg:text-lg">
+            <p className="text-sm font-semibold text-gray-800 lg:text-lg">
               Sort
             </p>
             <select
@@ -81,10 +81,10 @@ const DashboardPage = () => {
       {/* FOOTER */}
       <footer className="bg-blue-50">
         <div className="p-4 text-center border-t-4 border-yellow-600 md:p-6 lg:p-8">
-          <p className="text-md text-gray-800 md:text-lg lg:text-xl">
+          <p className="text-sm text-gray-800 md:text-lg">
             &copy; {new Date().getFullYear()} uTask. All rights reserved.
           </p>
-          <p className="font-light text-md text-gray-800 md:text-lg lg:text-xl">
+          <p className="font-light text-sm text-gray-800 md:text-lg">
             Need help?{" "}
             <a
               className="text-blue-800 hover:underline"

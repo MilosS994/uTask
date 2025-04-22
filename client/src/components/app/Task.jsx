@@ -80,7 +80,7 @@ const Task = ({ task }) => {
         </div>
         <div className="flex gap-4">
           <FaPenToSquare
-            className={`text-2xl text-gray-800 hover:text-gray-600 cursor-pointer transition-all duration-100 ease-in-out md:text-3xl xl:text-4xl ${
+            className={`text-2xl text-gray-800 hover:text-gray-600 cursor-pointer transition-all duration-100 ease-in-out md:text-2xl xl:text-4xl ${
               task.done ? "opacity-50 cursor-not-allowed" : ""
             }`}
             onClick={handleEdit}
@@ -88,18 +88,18 @@ const Task = ({ task }) => {
           {/* Check if task is done to show the correct icon */}
           {task.done ? (
             <CgCalendarDue
-              className="text-2xl text-gray-800 hover:text-gray-600 cursor-pointer transition-all duration-100 ease-in-out md:text-3xl xl:text-4xl"
+              className="text-2xl text-gray-800 hover:text-gray-600 cursor-pointer transition-all duration-100 ease-in-out md:text-2xl xl:text-4xl"
               onClick={handleDone}
             />
           ) : (
             <IoMdDoneAll
-              className="text-2xl text-green-800 hover:text-green-600 cursor-pointer transition-all duration-100 ease-in-out md:text-3xl xl:text-4xl"
+              className="text-2xl text-green-800 hover:text-green-600 cursor-pointer transition-all duration-100 ease-in-out md:text-2xl xl:text-4xl"
               onClick={handleDone}
             />
           )}
 
           <AiOutlineDelete
-            className="text-red-800 text-2xl hover:text-red-600 cursor-pointer transition-all duration-100 ease-in-out md:text-3xl xl:text-4xl"
+            className="text-red-800 text-2xl hover:text-red-600 cursor-pointer transition-all duration-100 ease-in-out md:text-2xl xl:text-4xl"
             onClick={handleDelete}
           />
         </div>

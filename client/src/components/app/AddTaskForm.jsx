@@ -37,13 +37,13 @@ const AddTaskForm = ({ onClose }) => {
       <select
         value={priority}
         onChange={(e) => setPriority(parseInt(e.target.value))}
-        className="border rounded px-2 py-1"
+        className="border rounded px-2 py-1 cursor-pointer"
       >
         <option value="3">High</option>
         <option value="2">Medium</option>
         <option value="1">Low</option>
       </select>
-      <Button type="submit" className="w-full">
+      <Button type="submit" className="w-full cursor-pointer">
         Create Task
       </Button>
     </form>
