@@ -90,7 +90,7 @@ const DashboardPage = () => {
       </section>
       {/* FOOTER */}
       <footer className="bg-blue-50 hover:cursor-default">
-        <div className="p-4 text-center border-t-4 border-yellow-600 md:p-6 lg:p-8">
+        <div className="p-4 text-center border-t-4 border-yellow-600 lg:p-6">
           <p className="text-sm text-gray-800 md:text-lg">
             &copy; {new Date().getFullYear()} uTask. All rights reserved.
           </p>
