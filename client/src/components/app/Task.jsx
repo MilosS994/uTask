@@ -45,16 +45,19 @@ const Task = ({ task }) => {
         task.done ? "bg-gray-300 cursor-not-allowed" : ""
       }`}
     >
-      <h2
-        className={`text-md text-gray-800 font-bold mb-2 md:text-lg lg:text-xl lg:mb-3 xl:text-2xl ${
-          task.done ? "line-through text-gray-500" : ""
-        }`}
-      >
-        {task.title}
-      </h2>
-      <p className="text-gray-800 wrap-break-word text-sm mb-6 md:text-md lg:text-lg lg:mb-8">
-        {task.description}
-      </p>
+      <div>
+        <h2
+          className={`text-md text-gray-800 font-bold mb-2 md:text-lg lg:text-xl lg:mb-3 xl:text-2xl ${
+            task.done ? "line-through text-gray-500" : ""
+          }`}
+        >
+          {task.title}
+        </h2>
+        <p className="text-gray-800 wrap-break-word text-sm mb-6 md:text-md lg:text-lg lg:mb-8">
+          {task.description}
+        </p>
+      </div>
+
       <div className="flex justify-between items-center">
         <div className="flex items-center justify-center gap-2">
           <FaCircle
