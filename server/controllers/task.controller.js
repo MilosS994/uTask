@@ -4,7 +4,31 @@ import mongoose from "mongoose";
 export const getAllTasks = async (req, res, next) => {
   try {
     const { userId } = req.user;
-    const tasks = await Task.find({ user: userId }).sort({ createdAt: -1 });
+
+    const sortBy = req.query.sortBy;
+    let sortOption = {};
+    switch (sortBy) {
+      case "done":
+        sortOption = { done: -1 };
+        break;
+      case "priority-asc":
+        sortOption = { priority: 1 };
+        break;
+      case "priority-desc":
+        sortOption = { priority: -1 };
+        break;
+      case "active-first":
+        sortOption = { done: 1 };
+        break;
+      case "default":
+        sortOption = { createdAt: -1 };
+        break;
+      default:
+        sortOption = { createdAt: -1 }; // Podrazumevano sortiranje
+        break;
+    }
+
+    const tasks = await Task.find({ user: userId }).sort(sortOption);
 
     if (tasks.length === 0) {
       res
