@@ -15,8 +15,13 @@ import TasksContainer from "../components/app/TasksContainer";
 const DashboardPage = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isNewTaskOpen, setIsNewTaskOpen] = useState(false);
+  const [sortBy, setSortBy] = useState("default");
   const user = useAuthStore((state) => state.user);
   const signout = useAuthStore((state) => state.signout);
+
+  const handleSortChange = (event) => {
+    setSortBy(event.target.value);
+  };
   return (
     <main className="min-w-[100vw] min-h-[100vh] flex flex-col justify-between">
       {/* HEADER */}
@@ -66,17 +71,19 @@ const DashboardPage = () => {
             <select
               name="sort"
               id="sort"
+              value={sortBy}
+              onChange={handleSortChange}
               className="text-sm text-gray-800 cursor-pointer focus:outline-none focus:border-transparent rounded-md shadow-sm p-1 lg:text-lg"
             >
               <option value="default">Default</option>
-              <option value="low-high">Low to High</option>
-              <option value="high-low">High to Low</option>
-              <option value="done-first">Done</option>
+              <option value="priority-asc">Low to High</option>
+              <option value="priority-desc">High to Low</option>
+              <option value="done">Done</option>
               <option value="active-first">Active</option>
             </select>
           </div>
         </div>
-        <TasksContainer />
+        <TasksContainer sortBy={sortBy} />
       </section>
       {/* FOOTER */}
       <footer className="bg-blue-50">
