@@ -53,7 +53,7 @@ const Task = ({ task }) => {
         >
           {task.title}
         </h2>
-        <p className="text-gray-800 wrap-break-word text-sm mb-6 md:text-md lg:text-lg lg:mb-8 hover:cursor-default">
+        <p className="text-gray-800 wrap-break-word text-sm mb-6 md:text-md lg:text-md lg:mb-8 hover:cursor-default">
           {task.description}
         </p>
       </div>
@@ -62,7 +62,7 @@ const Task = ({ task }) => {
         <div className="flex items-center justify-center gap-2">
           <FaCircle
             title="Priority"
-            className={`text-2xl md:text-3xl ${
+            className={`text-xl md:text-2xl ${
               task.priority === 3
                 ? "text-red-700"
                 : task.priority === 2
@@ -85,7 +85,7 @@ const Task = ({ task }) => {
         <div className="flex gap-4 items-center justify-center">
           <FaPenToSquare
             title="Edit Task"
-            className={`text-2xl text-gray-800 hover:text-gray-600 cursor-pointer transition-all duration-100 ease-in-out md:text-2xl xl:text-4xl ${
+            className={`text-2xl text-gray-800 hover:text-gray-600 cursor-pointer transition-all duration-100 ease-in-out md:text-2xl xl:text-3xl ${
               task.done ? "opacity-50 cursor-not-allowed" : ""
             }`}
             onClick={handleEdit}
@@ -94,13 +94,13 @@ const Task = ({ task }) => {
           {task.done ? (
             <FaUndoAlt
               title="Undo Task"
-              className="text-2xl text-gray-800 hover:text-gray-600 cursor-pointer transition-all duration-100 ease-in-out md:text-2xl xl:text-4xl"
+              className="text-2xl text-gray-800 hover:text-gray-600 cursor-pointer transition-all duration-100 ease-in-out md:text-2xl xl:text-3xl"
               onClick={handleDone}
             />
           ) : (
             <IoMdDoneAll
               title="Mark as Done"
-              className="text-2xl text-green-800 hover:text-green-600 cursor-pointer transition-all duration-100 ease-in-out md:text-2xl xl:text-4xl"
+              className="text-2xl text-green-800 hover:text-green-600 cursor-pointer transition-all duration-100 ease-in-out md:text-2xl xl:text-3xl"
               onClick={handleDone}
             />
           )}
