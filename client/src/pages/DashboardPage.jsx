@@ -25,7 +25,7 @@ const DashboardPage = () => {
   return (
     <main className="min-w-[100vw] min-h-[100vh] flex flex-col justify-between">
       {/* HEADER */}
-      <header className="flex justify-between items-center p-6 bg-blue-900 text-white border-b-4 border-yellow-600 md:p-8 lg:p-10">
+      <header className="flex justify-between items-center p-6 bg-blue-900 text-white border-b-4 border-yellow-600 md:p-8 lg:p-10 hover:cursor-default">
         <h2 className="text-neutral-300 text-lg italic md:text-2xl lg:text-3xl">
           Welcome,{" "}
           {user && (
@@ -68,7 +68,7 @@ const DashboardPage = () => {
             </Modal>
           )}
           <div className="flex items-center justify-center gap-2 md:gap-4 lg:gap-6">
-            <p className="text-sm font-semibold text-gray-800 lg:text-lg">
+            <p className="text-sm font-semibold text-gray-800 lg:text-lg hover:cursor-default">
               Sort
             </p>
             <select
@@ -89,7 +89,7 @@ const DashboardPage = () => {
         <TasksContainer sortBy={sortBy} />
       </section>
       {/* FOOTER */}
-      <footer className="bg-blue-50">
+      <footer className="bg-blue-50 hover:cursor-default">
         <div className="p-4 text-center border-t-4 border-yellow-600 md:p-6 lg:p-8">
           <p className="text-sm text-gray-800 md:text-lg">
             &copy; {new Date().getFullYear()} uTask. All rights reserved.

@@ -47,13 +47,13 @@ const Task = ({ task }) => {
     >
       <div>
         <h2
-          className={`text-md text-gray-800 font-bold mb-2 md:text-lg lg:text-xl lg:mb-3 xl:text-2xl ${
+          className={`text-md text-gray-800 font-bold mb-2 md:text-lg lg:text-xl lg:mb-3 xl:text-2xl hover:cursor-default ${
             task.done ? "line-through text-gray-500" : ""
           }`}
         >
           {task.title}
         </h2>
-        <p className="text-gray-800 wrap-break-word text-sm mb-6 md:text-md lg:text-lg lg:mb-8">
+        <p className="text-gray-800 wrap-break-word text-sm mb-6 md:text-md lg:text-lg lg:mb-8 hover:cursor-default">
           {task.description}
         </p>
       </div>
