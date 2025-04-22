@@ -23,6 +23,19 @@ body {
   }
 }
 
+/* SCROLLBAR */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #9ca3af;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 :root {
