@@ -36,10 +36,12 @@ const DashboardPage = () => {
         </h2>{" "}
         <div className="flex gap-4 items-center">
           <CgProfile
+            title="Profile"
             className="text-3xl hover:text-neutral-300 cursor-pointer md:text-5xl"
             onClick={() => setIsProfileOpen(true)}
           />
           <CiLogout
+            title="Logout"
             className="text-3xl hover:text-neutral-300 cursor-pointer md:text-5xl"
             onClick={() => signout()}
           />
