@@ -5,7 +5,7 @@ import { FaCircle } from "react-icons/fa";
 import { FaPenToSquare } from "react-icons/fa6";
 import { IoMdDoneAll } from "react-icons/io";
 import { AiOutlineDelete } from "react-icons/ai";
-import { CgCalendarDue } from "react-icons/cg";
+import { FaUndoAlt } from "react-icons/fa";
 
 import useTaskStore from "../../store/taskStore.js";
 import EditTaskForm from "./EditTaskForm.jsx";
@@ -61,7 +61,8 @@ const Task = ({ task }) => {
       <div className="flex justify-between items-center">
         <div className="flex items-center justify-center gap-2">
           <FaCircle
-            className={`text-2xl md:text-3xl xl:text-4xl ${
+            title="Priority"
+            className={`text-2xl md:text-3xl ${
               task.priority === 3
                 ? "text-red-700"
                 : task.priority === 2
@@ -81,8 +82,9 @@ const Task = ({ task }) => {
             <option value="1">Low</option>
           </select>
         </div>
-        <div className="flex gap-4">
+        <div className="flex gap-4 items-center justify-center">
           <FaPenToSquare
+            title="Edit Task"
             className={`text-2xl text-gray-800 hover:text-gray-600 cursor-pointer transition-all duration-100 ease-in-out md:text-2xl xl:text-4xl ${
               task.done ? "opacity-50 cursor-not-allowed" : ""
             }`}
@@ -90,18 +92,21 @@ const Task = ({ task }) => {
           />
           {/* Check if task is done to show the correct icon */}
           {task.done ? (
-            <CgCalendarDue
+            <FaUndoAlt
+              title="Undo Task"
               className="text-2xl text-gray-800 hover:text-gray-600 cursor-pointer transition-all duration-100 ease-in-out md:text-2xl xl:text-4xl"
               onClick={handleDone}
             />
           ) : (
             <IoMdDoneAll
+              title="Mark as Done"
               className="text-2xl text-green-800 hover:text-green-600 cursor-pointer transition-all duration-100 ease-in-out md:text-2xl xl:text-4xl"
               onClick={handleDone}
             />
           )}
 
           <AiOutlineDelete
+            title="Delete Task"
             className="text-red-800 text-2xl hover:text-red-600 cursor-pointer transition-all duration-100 ease-in-out md:text-2xl xl:text-4xl"
             onClick={handleDelete}
           />
