@@ -9,6 +9,7 @@ const EditTaskForm = ({ task, onSave, onCancel }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState(2);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
     if (task) {
@@ -20,7 +21,10 @@ const EditTaskForm = ({ task, onSave, onCancel }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!title.trim()) return;
+    if (!title.trim()) {
+      setErrorMessage("Title is required");
+      return;
+    }
     await updateTask(task._id, { title, description, priority });
     onSave();
   };
@@ -50,6 +54,9 @@ const EditTaskForm = ({ task, onSave, onCancel }) => {
         <option value="2">Medium</option>
         <option value="1">Low</option>
       </select>
+      {errorMessage && (
+        <p className="text-red-700 font-semibold text-sm">{errorMessage}</p>
+      )}
       <div className="flex justify-end gap-2">
         <Button type="button" onClick={handleCancel} className="cursor-pointer">
           Cancel
