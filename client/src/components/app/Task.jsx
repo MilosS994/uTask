@@ -41,19 +41,25 @@ const Task = ({ task }) => {
 
   return (
     <div
-      className={`relative transition-all duration-200 hover:shadow-xl hover:-translate-y-1 p-4 border rounded-2xl shadow-md md:p-6 flex flex-col justify-between ${
-        task.done ? "bg-gray-200 cursor-not-allowed" : "bg-white"
-      }`}
+      className={`relative p-4 pl-6 rounded-2xl shadow-md transition-all duration-200 flex flex-col justify-between ${
+        task.done ? "bg-gray-200" : "bg-white"
+      } border-l-[4px] ${
+        task.priority === 3
+          ? "border-red-600"
+          : task.priority === 2
+          ? "border-yellow-600"
+          : "border-green-600"
+      } hover:shadow-lg`}
     >
       {task.done && (
-        <span className="absolute top-2 right-3 bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded-full">
+        <p className="text-xs text-white absolute top-4 right-4 bg-green-400 px-2 py-1 rounded-lg">
           Done
-        </span>
+        </p>
       )}
-      <div>
+      <div className="hover:translate-y-0.5 transition-all duration-200 ease-in-out flex flex-col gap-4 mb-2">
         <h2
-          className={`text-md text-gray-800 font-bold mb-2 md:text-lg lg:text-xl lg:mb-3 xl:text-2xl hover:cursor-default ${
-            task.done ? "line-through text-gray-500" : ""
+          className={`text-lg md:text-xl lg:text-2xl font-semibold hover:cursor-default ${
+            task.done ? "line-through text-gray-500" : "text-gray-800"
           }`}
         >
           {task.title}
