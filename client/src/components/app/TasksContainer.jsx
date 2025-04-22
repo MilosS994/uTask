@@ -2,12 +2,12 @@ import Task from "./Task";
 import useTaskStore from "../../store/taskStore.js";
 import { useEffect } from "react";
 
-const TasksContainer = () => {
+const TasksContainer = ({ sortBy }) => {
   const { tasks, getTasks, isLoading } = useTaskStore();
 
   useEffect(() => {
-    getTasks();
-  }, []);
+    getTasks(`?sortBy=${sortBy}`);
+  }, [getTasks, sortBy]);
 
   if (isLoading) {
     return (
