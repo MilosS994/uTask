@@ -28,7 +28,7 @@ const TasksContainer = ({ sortBy }) => {
   }
 
   return (
-    <div className="w-full px-6 pb-6 flex flex-col gap-3 md:grid lg:grid-cols-2 lg:gap-6 lg:px-8 lg:pb-8 xl:px-10 xl:pb-10">
+    <div className="w-full px-6 pb-6 flex flex-col gap-3 md:grid lg:grid-cols-3 lg:gap-6 lg:px-8 lg:pb-8 xl:px-10 xl:pb-10">
       {tasks.map((task) => (
         <Task key={task._id} task={task} />
       ))}
