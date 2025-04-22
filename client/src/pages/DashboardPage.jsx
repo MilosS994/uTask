@@ -55,6 +55,7 @@ const DashboardPage = () => {
       <section className="flex-1">
         <div className="p-8 md:p-6 flex justify-evenly">
           <IoIosAddCircleOutline
+            title="Add Task"
             className="text-3xl text-gray-800 hover:text-gray-600 cursor-pointer transition-all duration-100 ease-in-out md:text-5xl"
             onClick={() => setIsNewTaskOpen(true)}
           />
