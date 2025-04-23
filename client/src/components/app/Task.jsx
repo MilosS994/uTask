@@ -52,7 +52,7 @@ const Task = ({ task }) => {
       } hover:shadow-lg`}
     >
       {task.done && (
-        <p className="text-xs text-white absolute top-4 right-4 bg-green-400 px-2 py-1 rounded-lg">
+        <p className="text-xs text-white absolute top-4 right-4 bg-green-400 px-2 py-1 rounded-lg hover:cursor-default">
           Done
         </p>
       )}
