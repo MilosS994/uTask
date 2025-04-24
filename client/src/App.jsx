@@ -12,7 +12,7 @@ const App = () => {
 
   useEffect(() => {
     checkAuthStatus();
-  }, []);
+  }, [checkAuthStatus]);
 
   return (
     <Routes>
