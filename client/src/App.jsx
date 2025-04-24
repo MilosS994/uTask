@@ -16,6 +16,17 @@ const App = () => {
 
   return (
     <Routes>
+      {/* Default route */}
+      <Route
+        path="/"
+        element={
+          isAuthenticated ? (
+            <Navigate to="/dashboard" replace />
+          ) : (
+            <Navigate to="/signin" replace />
+          )
+        }
+      />
       {/* Signin route */}
       <Route
         path="/signin"
