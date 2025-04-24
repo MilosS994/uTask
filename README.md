@@ -10,7 +10,7 @@ This repository contains the **backend** code with secure authentication, clean 
 
 ## 🌐 Live Demo
 
-🚀 [Live Application](#) – ... _(Will be added once the app is deployed)_
+🚀 [Live Application](https://u-task-navy.vercel.app/)
 
 ---
 
@@ -38,7 +38,6 @@ This repository contains the **backend** code with secure authentication, clean 
 ### ⚙️ Development Tools
 
 - **nodemon** – Auto-reload during dev
-- **cross-env** – Cross-platform env support
 - **Git & GitHub** – Version control
 
 ---
@@ -79,28 +78,28 @@ Base path: `/api/v1`
 
 ### 🔑 Auth Routes
 
-| Method | Endpoint        | Description             |
-| ------ | --------------- | ----------------------- |
-| POST   | `/auth/signup`  | Register a new user     |
-| POST   | `/auth/signin`  | Login a user            |
-| POST   | `/auth/signout` | Logout the current user |
+| Method | Endpoint         | Description              |
+| ------ | ---------------- | ------------------------ |
+| POST   | `/auth/signup`   | Register a new user      |
+| POST   | `/auth/signin`   | Login a user             |
+| POST   | `/auth/signout`  | Logout the current user  |
 
 ### 👤 User Routes
 
-| Method | Endpoint    | Description           |
-| ------ | ----------- | --------------------- |
-| GET    | `/users/me` | Get current user info |
-| PATCH  | `/users/me` | Update user info      |
+| Method  | Endpoint     | Description            |
+| ------- | ------------ | ---------------------- |
+| GET     | `/users/me`  | Get current user info  |
+| PATCH   | `/users/me`  | Update user info       |
 
 ### 📋 Task Routes
 
-| Method | Endpoint     | Description       |
-| ------ | ------------ | ----------------- |
-| POST   | `/tasks`     | Create a new task |
-| GET    | `/tasks`     | Get all tasks     |
-| GET    | `/tasks/:id` | Get task by ID    |
-| PUT    | `/tasks/:id` | Update task by ID |
-| DELETE | `/tasks/:id` | Delete task by ID |
+| Method  | Endpoint     | Description        |
+| ------- | ------------ | ------------------ |
+| POST    | `/tasks`     | Create a new task  |
+| GET     | `/tasks`     | Get all tasks      |
+| GET     | `/tasks/:id` | Get task by ID     |
+| PUT     | `/tasks/:id` | Update task by ID  |
+| DELETE  | `/tasks/:id` | Delete task by ID  |
 
 > 🛡️ All `users` and `tasks` routes require JWT authentication via cookies.
 
@@ -111,25 +110,33 @@ Base path: `/api/v1`
 ```bash
 server/
 │
-├── config/        # ENV config
-├── controllers/   # Auth, User, and Task logic
-├── middleware/    # Auth middleware & error handler
-├── models/        # Mongoose schemas (User, Task)
-├── routes/        # API routes
-└── server.js      # Entry point
+├── config/        # ENV config
+├── controllers/   # Auth, User, and Task logic
+├── middleware/    # Auth middleware & error handler
+├── models/        # Mongoose schemas (User, Task)
+├── routes/        # API routes
+└── server.js      # Entry point
 
 
 client/
 │
 ├── src/
-│   ├── assets/         # Logo
-│   ├── components/     # Reusable UI components (Buttons, Inputs, etc.) and app components (Modals, Forms)
-│   ├── pages/          # Page components (Signup, Signin, Dashboard, etc.)
-│   ├── store/          # Zustand state management store
-│   ├── services/       # Axios
-│   ├── App.jsx         # Main app component and routing setup
-│   ├── main.jsx
-│   ├── index.css       # Global styles
+│   ├── assets/         # Logo
+│   ├── components/     # Reusable UI components (Buttons, Inputs, etc.) and app components (Modals, Forms)
+│   ├── pages/          # Page components (Signup, Signin, Dashboard, etc.)
+│   ├── store/          # Zustand state management store
+│   ├── services/       # Axios
+│   ├── App.jsx         # Main app component and routing setup
+│   ├── main.jsx
+│   ├── index.css       # Global styles
 │
-└── index.html          # Root HTML template
+└── index.html          # Root HTML template
 ```
+
+## 🚀 Deployment
+
+The **frontend** of this application is deployed on **Vercel** and can be accessed at:
+
+[https://u-task-navy.vercel.app/](https://u-task-navy.vercel.app/)
+
+The **backend** of this application is deployed on **Render**.
