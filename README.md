@@ -28,12 +28,17 @@ npm install
 
 ### 3. Setup environmental variables
 
-PORT=5500
-MONGO_URI=your_mongo_uri_here
-JWT_SECRET=your_jwt_secret
-JWT_EXPIRES_IN=as_you_wish
-ORIGIN=http://localhost:5173
-NODE_ENV=development
+#### PORT=5500
+
+#### MONGO_URI=your_mongo_uri_here
+
+#### JWT_SECRET=your_jwt_secret
+
+#### JWT_EXPIRES_IN=as_you_wish
+
+#### ORIGIN=http://localhost:5173
+
+#### NODE_ENV=development
 
 ### 4. Start the backend server
 
