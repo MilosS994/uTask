@@ -83,7 +83,7 @@ const SigninPage = () => {
                 className="w-full rounded-xl bg-[#79a9b9] hover:bg-[#5d8693] transition duration-200 text-white cursor-pointer"
                 disabled={isAuthLoading}
               >
-                {isAuthLoading ? "Signing in..." : "Sign In"}
+                {isAuthLoading ? "Loading" : "Sign In"}
               </Button>
             </form>
           </CardContent>
